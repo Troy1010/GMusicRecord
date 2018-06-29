@@ -1,3 +1,4 @@
+import traceback, sys, os
 try:
     ##region Settings
     bWriteLog = True
@@ -19,12 +20,8 @@ try:
     import subprocess
     subprocess.run(['python', 'setup.py', 'install'])
 
-    ##region Imports
     import GMusicRecord
     import TM_CommonPy as TM
-    import traceback, sys
-    ##endregion
-
 
     GMR_ExecuteLog.debug("Making a record")
     TM.MakeDir("Workspace",bCDInto=True)
