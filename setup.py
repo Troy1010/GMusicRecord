@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='GMusicRecord'
-    ,version='0.2.01'
+    ,version='0.2.2'
     ,description=r'Automates making a record of gmusic songs so that the user can know if google removed some parts of the library.'
     ,author='Troy1010'
     #,author_email=''
