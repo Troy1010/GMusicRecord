@@ -11,7 +11,8 @@ def DownloadAndCommitRecord():
     GMRLog.debug(TM.FnName()+"`Open")
     ##region Determine library
     api = Mobileclient()
-    api.login(config.sGMusicUsername, config.sGMusicPassword, Mobileclient.FROM_MAC_ADDRESS)
+    if not api.login(config.sGMusicUsername, config.sGMusicPassword, Mobileclient.FROM_MAC_ADDRESS):
+        raise Exception("Could not log in under username:"+config.sGMusicUsername+" password:"+config.sGMusicPassword)
     library = api.get_all_songs()
     GMRLog.debug("library:"+TM.Narrator.Narrate(library))
     ##endregion
