@@ -13,7 +13,7 @@ def DownloadAndCommitRecord():
     print("Retrieving library..")
     api = Mobileclient()
     if not api.login(config["DEFAULT"]["sGMusicUsername"], config["DEFAULT"]["sGMusicPassword"], Mobileclient.FROM_MAC_ADDRESS):
-        raise Exception("Google Music login attempt failed under username:"+config["DEFAULT"]["sGMusicUsername"]+" password:"+config["DEFAULT"]["sGMusicPassword"])
+        raise Exception("Google Music login attempt failed under username:"+config["DEFAULT"]["sGMusicUsername"])
     library = api.get_all_songs()
     GMRLog.debug("library:"+TM.Narrator.Narrate(library))
     ##endregion
@@ -28,7 +28,7 @@ def DownloadAndCommitRecord():
     ##region Make Commit
     print("Writing SongList.txt and making commit..")
     TM.Run("git clone "+config["DEFAULT"]["sRepoURL"])
-    os.chdir(config["DEFAULT"]["sRepoTitle"])
+    os.chdir(TM.GetGitTitleFromURL(config["DEFAULT"]["sRepoURL"]))
     TM.Delete('SongList.txt')
     with open('SongList.txt','w') as vSongListFile:
         for sSongTitle in cSongTitles:

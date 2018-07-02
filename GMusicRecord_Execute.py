@@ -24,10 +24,8 @@ try:
     import TM_CommonPy as TM
 
     GMR_ExecuteLog.debug("Making a record")
-    TM.MakeDir("Workspace",bCDInto=True)
-    GMusicRecord.DownloadAndCommitRecord()
-    os.chdir("..")
-    TM.Delete("Workspace")
+    with TM.WorkspaceContext("Workspace",bPostDelete=True):
+        GMusicRecord.DownloadAndCommitRecord()
 except Exception as e:
     print("====================================================================")
     print("Traceback (most recent call last):")
