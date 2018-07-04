@@ -15,7 +15,7 @@ def DownloadAndCommitRecord():
     if not api.login(config["DEFAULT"]["sGMusicUsername"], config["DEFAULT"]["sGMusicPassword"], Mobileclient.FROM_MAC_ADDRESS):
         raise Exception("Google Music login attempt failed under username:"+config["DEFAULT"]["sGMusicUsername"])
     library = api.get_all_songs()
-    GMRLog.debug("library:"+TM.Narrator.Narrate(library))
+    GMRLog.debug("library:"+TM.Narrate(library))
     ##endregion
     ##region Determine cSongTitles
     print("Making and sorting cSongTitles..")
@@ -23,7 +23,7 @@ def DownloadAndCommitRecord():
     for vSong in library:
         cSongTitles.append(vSong['title'])
     cSongTitles.sort()
-    GMRLog.debug("cSongTitles:"+TM.Narrator.Narrate(cSongTitles))
+    GMRLog.debug("cSongTitles:"+TM.Narrate(cSongTitles))
     ##endregion
     ##region Make Commit
     print("Writing SongList.txt and making commit..")

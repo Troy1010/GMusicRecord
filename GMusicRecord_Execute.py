@@ -36,8 +36,6 @@ try:
         GMusicRecord.DownloadAndCommitRecord()
 except Exception as e:
     print("====================================================================")
-    print("Traceback (most recent call last):")
-    traceback.print_tb(e.__traceback__)
-    print(e)
+    traceback.print_exc()
     os.system('pause')
     sys.exit(1)
