@@ -23,10 +23,12 @@ try:
         if not bLogFileIsOpen:
             GMR_ExecuteLog.addHandler(logging.FileHandler(sLogFile))
     ##endregion
-
-    GMR_ExecuteLog.debug("Installing GmusicRecord")
-    import subprocess
-    subprocess.run(['python', 'setup.py', 'install'])
+    ##region Install GMusicRecord
+    GMR_ExecuteLog.debug("Installing GMusicRecord")
+    import distutils.core
+    distutils.core.run_setup("setup.py",script_args=["install"])
+    GMR_ExecuteLog.debug("Finished installing GMusicRecord")
+    ##endregion
 
     import GMusicRecord
     import TM_CommonPy as TM
@@ -34,6 +36,7 @@ try:
     GMR_ExecuteLog.debug("Making a record")
     with TM.WorkspaceContext("Workspace",bPostDelete=True):
         GMusicRecord.DownloadAndCommitRecord()
+    GMR_ExecuteLog.debug("Done")
 except Exception as e:
     print("====================================================================")
     traceback.print_exc()
