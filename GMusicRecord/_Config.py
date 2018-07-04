@@ -10,6 +10,7 @@ if not os.path.isfile(sConfigFilePath):
             +"\nsGMusicUsername = xxx@gmail.com"
             +"\nsGMusicPassword = xxx"
             +"\nsRepoURL = https://github.com/Troy1010/GMusicRecord1.git"
+            +"\nbDebug = True"
             )
     TM.MsgBox("Config file not found.\nNew config file generated at:"+sConfigFilePath
         +"\nDefault values are not adequate. Fill out config file and re-run."
