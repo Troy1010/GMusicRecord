@@ -2,10 +2,10 @@ import traceback, sys, os
 try:
     ##region Settings
     bWriteLog = True
+    sLogFile = os.path.join(__file__,'..','GMR_ExecuteLog.log')
     ##endregion
     ##region LogInit
-    import logging, os
-    sLogFile = os.path.join(__file__,'..','GMR_ExecuteLog.log')
+    import logging
     GMR_ExecuteLog = logging.getLogger(__name__)
     GMR_ExecuteLog.setLevel(logging.DEBUG)
     try:
@@ -13,7 +13,15 @@ try:
     except (PermissionError,FileNotFoundError):
         pass
     if bWriteLog:
-        GMR_ExecuteLog.addHandler(logging.FileHandler(sLogFile))
+        bLogFileIsOpen = False
+        try:
+            os.rename(sLogFile,sLogFile)
+        except PermissionError:
+            bLogFileIsOpen = True
+        except FileNotFoundError:
+            pass
+        if not bLogFileIsOpen:
+            GMR_ExecuteLog.addHandler(logging.FileHandler(sLogFile))
     ##endregion
 
     GMR_ExecuteLog.debug("Installing GmusicRecord")

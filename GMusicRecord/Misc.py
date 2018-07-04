@@ -1,10 +1,10 @@
 ##region Imports
-from GMusicRecord import GMRLog
 from gmusicapi import Mobileclient
 import TM_CommonPy as TM
 import datetime
 import os
-from GMusicRecord import config
+from GMusicRecord._Config import config
+from GMusicRecord._Logger import GMRLog
 ##endregion
 
 def DownloadAndCommitRecord():
