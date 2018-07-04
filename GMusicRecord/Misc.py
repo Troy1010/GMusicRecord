@@ -30,7 +30,7 @@ def DownloadAndCommitRecord():
     TM.Run("git clone "+config["DEFAULT"]["sRepoURL"])
     os.chdir(TM.GetGitTitleFromURL(config["DEFAULT"]["sRepoURL"]))
     TM.Delete('SongList.txt')
-    with open('SongList.txt','w') as vSongListFile:
+    with open('SongList.txt','w',errors="replace") as vSongListFile:
         for sSongTitle in cSongTitles:
             vSongListFile.write("\n"+sSongTitle)
     TM.Run("git add .")
