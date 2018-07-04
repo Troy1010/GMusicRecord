@@ -29,9 +29,10 @@ try:
     distutils.core.run_setup("setup.py",script_args=["install"])
     GMR_ExecuteLog.debug("Finished installing GMusicRecord")
     ##endregion
-
+    ##region Imports
     import GMusicRecord
     import TM_CommonPy as TM
+    ##endregion
 
     GMR_ExecuteLog.debug("Making a record")
     with TM.WorkspaceContext("Workspace",bPostDelete=True):

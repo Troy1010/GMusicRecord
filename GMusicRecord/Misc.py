@@ -8,7 +8,7 @@ from GMusicRecord._Logger import GMRLog
 ##endregion
 
 def _WriteSongTitlesTxtFile(cSongTitles):
-    with open('SongList.txt','w',errors="replace") as vSongListFile:
+    with open('SongList.txt','w',encoding="utf-8") as vSongListFile:
         for sSongTitle in cSongTitles:
             vSongListFile.write("\n"+sSongTitle)
 
