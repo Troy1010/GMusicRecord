@@ -25,5 +25,5 @@ if bWriteLog:
     except FileNotFoundError:
         pass
     if not bLogFileIsOpen:
-        GMRLog.addHandler(logging.FileHandler(sLogFile))
+        GMRLog.addHandler(logging.FileHandler(sLogFile,'w','utf-8'))
 ##endregion

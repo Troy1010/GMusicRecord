@@ -24,8 +24,8 @@ try:
             GMR_ExecuteLog.addHandler(logging.FileHandler(sLogFile))
     ##endregion
     ##region Install GMusicRecord
-    GMR_ExecuteLog.debug("Installing GMusicRecord")
     import distutils.core
+    GMR_ExecuteLog.debug("Installing GMusicRecord")
     distutils.core.run_setup("setup.py",script_args=["install"])
     GMR_ExecuteLog.debug("Finished installing GMusicRecord")
     ##endregion
