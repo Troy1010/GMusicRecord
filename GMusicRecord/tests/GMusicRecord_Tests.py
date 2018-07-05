@@ -22,7 +22,7 @@ class Test_GMusicRecord(unittest.TestCase):
 
     # ------Tests
 
-    @unittest.skip("Z")
+#    @unittest.skip("Z")
     def test_DownloadAndCommitRecord(self):
         with TM.CopyContext("res/Examples_Backup",self.sTestWorkspace+TM.FnName()):
             GMR.DownloadAndCommitRecord()
@@ -35,10 +35,10 @@ class Test_GMusicRecord(unittest.TestCase):
     def test_UnknownChar(self):
         GMRLog_Tests.debug("\n\n-------"+TM.FnName())
         with TM.CopyContext("res/Examples_Backup",self.sTestWorkspace+TM.FnName()):
-            library = [{"title":"�����"}
-                ,{"title":"WhiteLilies"}
-                ,{"title":"HardcoreRock"}
-                ,{"title":u'Δ, Й, ק, ‎ م, ๗, あ, 叶, 葉, and 말.'}
+            library = [{"title":"�����","artist":"Queen","album":"Innuendo"}
+                ,{"title":"WhiteLilies","artist":"Queen","album":"Innuendo"}
+                ,{"title":"HardcoreRock","artist":"Queen","album":"Innuendo"}
+                ,{"title":u'Δ, Й, ק, ‎ م, ๗, あ, 叶, 葉, and 말.',"artist":"Queen","album":"Innuendo"}
                 ]
             sRecord = _FormatRecord(library)
             with open('SongList.txt','w',encoding="utf-8") as vSongListFile:
@@ -48,9 +48,9 @@ class Test_GMusicRecord(unittest.TestCase):
     def test__FormatRecord(self):
         GMRLog_Tests.debug("\n\n-------"+TM.FnName())
         with TM.CopyContext("res/Examples_Backup",self.sTestWorkspace+TM.FnName()):
-            library = [{"title":"�����"}
-                ,{"title":"WhiteLilies"}
-                ,{"title":"HardcoreRock"}
-                ,{"title":u'Δ, Й, ק, ‎ م, ๗, あ, 叶, 葉, and 말.'}
+            library = [{"title":"�����","artist":"Queen","album":"Innuendo"}
+                ,{"title":"WhiteLilies","artist":"Queen","album":"Innuendo"}
+                ,{"title":"HardcoreRock","artist":"Queen","album":"Innuendo"}
+                ,{"title":u'Δ, Й, ק, ‎ م, ๗, あ, 叶, 葉, and 말.',"artist":"Queen","album":"Innuendo"}
                 ]
             GMRLog_Tests.debug(_FormatRecord(library))

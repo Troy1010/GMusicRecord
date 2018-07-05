@@ -8,12 +8,33 @@ from GMusicRecord._Logger import GMRLog
 ##endregion
 def _FormatRecord(library):
     print("Formatting Record..")
-    cRecord = []
+    cRecord = {}
+    GMRLog.debug("Forming cRecord..")
     for vSong in library:
-        cRecord.append(vSong['title'])
-    cRecord.sort()
-    GMRLog.debug("cRecord:"+TM.Narrate(cRecord))
-    return "\n".join(cRecord)
+        if vSong['artist'] == "":
+            sArtist = "<Unknown>"
+        else:
+            sArtist = vSong['artist']
+        if vSong['album'] == "":
+            sAlbum = "<Unknown>"
+        else:
+            sAlbum = vSong['album']
+        if not sArtist in cRecord:
+            cRecord[sArtist] = {}
+        if not sAlbum in cRecord[sArtist]:
+            cRecord[sArtist][sAlbum] = []
+        cRecord[sArtist][sAlbum].append(vSong['title'])
+    GMRLog.debug("cRecord:"+TM.Narrate(cRecord,iRecursionThreshold=3))
+    cReturningStrings = []
+    for vKey,vValue in sorted(cRecord.items()):
+        cReturningStrings.append(vKey)
+        for vKey2,vValue2 in sorted(vValue.items()):
+            cReturningStrings.append("\t"+vKey2)
+            for vValue3 in sorted(vValue2):
+                cReturningStrings.append("\t\t"+vValue3)
+    sReturning = "\n".join(cReturningStrings)
+    GMRLog.debug("sReturning:"+sReturning)
+    return sReturning
 
 def _MakeCommit(sRecord):
     print("Writing SongList.txt and making commit..")
